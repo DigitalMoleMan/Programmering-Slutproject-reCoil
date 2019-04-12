@@ -1,0 +1,29 @@
+# Slutproject Programmering 2
+
+## Planering
+
+### Ide
+
+* Multiplayer-spel
+	* 2 - 4 spelare.
+	* Korta omgångar på en begränsad yta.
+	* Objektorienterad
+	* Utmaningar
+		* Kollision
+		* Gravitation
+		* Server
+
+### Prio-lista
+
+1. Server / Client communication.
+	* Pinging
+	* Input / Output
+2. Simple game logic
+	* Movement
+3. Rendering
+4. Advanced game logic
+	* Collision
+	* Projectiles
+	* Physics
+		* Jumping
+		
