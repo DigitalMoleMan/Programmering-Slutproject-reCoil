@@ -2,19 +2,22 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
+
 public class Input {
 
     //Actions
-    public boolean up;
-    public boolean down;
-    public boolean left;
-    public boolean right;
+    private boolean up;
+    private boolean down;
+    private boolean left;
+    private boolean right;
+    private boolean jump;
 
     //Binds
-    public final int bind_up = 87;
-    public final int bind_down = 83;
-    public final int bind_left = 65;
-    public final int bind_right = 68;
+    private final int bind_up = 87;
+    private final int bind_down = 83;
+    private final int bind_left = 65;
+    private final int bind_right = 68;
+    private final int bind_jump = 32;
 
 
 
@@ -41,6 +44,9 @@ public class Input {
                                 case bind_right:
                                     right = true;
                                     break;
+                                case bind_jump:
+                                    jump = true;
+                                    break;
                             }
 
                             break;
@@ -57,6 +63,9 @@ public class Input {
                                     break;
                                 case bind_right:
                                     right = false;
+                                    break;
+                                case bind_jump:
+                                    jump = false;
                                     break;
                             }
                             break;
@@ -92,6 +101,7 @@ public class Input {
         input.add(down);
         input.add(left);
         input.add(right);
+        input.add(jump);
 
         return input;
     }

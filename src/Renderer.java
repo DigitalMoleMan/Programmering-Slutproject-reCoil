@@ -4,8 +4,6 @@ import java.awt.*;
 public class Renderer extends JPanel {
 
     JFrame frame;
-    public int rectX = 64;
-    public int rectY = 64;
     public int WIDTH = 640;
     public int HEIGHT = 640;
 
@@ -33,7 +31,7 @@ public class Renderer extends JPanel {
      */
     public void paintComponent(Graphics g) {
 
-        fillRect(0, 0, WIDTH, HEIGHT,"#ffffff", g);
+        fillRect(0, 0, WIDTH, HEIGHT,"#000", g);
 
         for(int i = 0; i < Main.draw.size(); i++){
             fillRect(Main.draw.get(i).x, Main.draw.get(i).y, Main.draw.get(i).width, Main.draw.get(i).height, Main.draw.get(i).color, g);
@@ -50,7 +48,7 @@ public class Renderer extends JPanel {
      * @param height Rectangle height
      * @param g      Graphics component
      */
-    public void fillRect(int x, int y, int width, int height, String color, Graphics g) {
+    private void fillRect(int x, int y, int width, int height, String color, Graphics g) {
         g.setColor(Color.decode(color));
         g.fillRect(x, y, width, height);
     }

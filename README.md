@@ -26,4 +26,17 @@
 	* Projectiles
 	* Physics
 		* Jumping
-		
+
+
+### Progress
+
+- [ ] Server/Client
+	- [ ] Server
+	- [ ] Client
+- [ ] Game Logic
+	- [x] Movement
+	- [x] Collision
+	- [ ] Physics
+	- [ ] Projectiles
+- [ ] Rendering
+	- [ ] Image rendering

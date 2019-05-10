@@ -2,12 +2,17 @@ import java.util.ArrayList;
 
 public class World{
 
-    ArrayList<Block> layout = new ArrayList<Block>();
+    public ArrayList<Block> layout = new ArrayList<Block>();
+
     public World(){
 
 
-       // Block floor = new Block(0, 600, 640, 40));
-        //this.add(floor);
+        layout.add(new Block(0, 32 * 18, 32 * 20, 32));
+        layout.add(new Block(0, 0, 32, 32 * 20));
+    }
+
+    public ArrayList<Block> getLayout(){
+        return layout;
     }
 }
 
@@ -23,3 +28,4 @@ class Block {
         this.height = height;
     }
 }
+
