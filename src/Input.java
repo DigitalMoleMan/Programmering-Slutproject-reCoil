@@ -1,5 +1,6 @@
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 
 public class Input {
 
@@ -15,31 +16,16 @@ public class Input {
     public final int bind_left = 65;
     public final int bind_right = 68;
 
-    public boolean getUp() {
-        return up;
-    }
 
-    public boolean getDown() {
-        return down;
-    }
-
-    public boolean getLeft() {
-        return left;
-    }
-
-    public boolean getRight() {
-        return right;
-    }
 
     /**
      * Initiates an Input handler
      */
-    public void keys() {
+    public Input() {
         KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(new KeyEventDispatcher() {
             @Override
             public boolean dispatchKeyEvent(KeyEvent e) {
                 synchronized (Input.class) {
-                    System.out.println(e.getKeyCode());
                     switch (e.getID()) {
                         case KeyEvent.KEY_PRESSED:
                             switch (e.getKeyCode()) {
@@ -83,5 +69,31 @@ public class Input {
         });
     }
 
+    public boolean getUp() {
+        return up;
+    }
+
+    public boolean getDown() {
+        return down;
+    }
+
+    public boolean getLeft() {
+        return left;
+    }
+
+    public boolean getRight() {
+        return right;
+    }
+
+    public ArrayList<Boolean> getInput(){
+        ArrayList<Boolean> input = new ArrayList<Boolean>();
+
+        input.add(up);
+        input.add(down);
+        input.add(left);
+        input.add(right);
+
+        return input;
+    }
 
 }

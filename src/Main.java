@@ -1,46 +1,65 @@
+import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class Main {
 
-    public static int posX;
-    public static int posY;
+    public static int playerX;
+    public static int playerY;
+
+    public static ArrayList<Rect> draw = new ArrayList<Rect>();
 
     public static void main(String[] args) {
 
-        Input input = new Input();
-        Game game = new Game();
-        Player player = new Player();
 
+
+        Input input = new Input();
+        Player player = new Player();
+        World world = new World();
+
+        ArrayList<Block> layout = world.layout;
         Renderer renderer = new Renderer();
 
-        input.keys();
 
+        Rect playerGfx = new Rect(player.getPosX(), player.getPosY(), 32, 32, "#ff0000");
+        draw.add(playerGfx);
 
         new Timer().scheduleAtFixedRate(new TimerTask(){
             @Override
             public void run(){
 
-                posX = player.getPosX();
-                posY = player.getPosY();
 
-                if(input.getUp()) {
-                    renderer.rectY -= 5;
-                }
-                if(input.getDown()) {
-                    renderer.rectY += 5;
-                }
+                //Logic
+                player.readInput(input.getInput());
+                player.update();
 
-                if(input.getRight()) {
-                    renderer.rectX += 5;
-                }
-                if(input.getLeft()) {
-                    renderer.rectX -= 5;
-                }
-                renderer.fillRect(0, 0, renderer.WIDTH, renderer.HEIGHT, "#ffffff", renderer.gc); //Fill background to clear last frame.
-                renderer.fillRect(player.posX, player.posY, 64, 64, "#448844", renderer.gc);
+                //Rendering
+                playerGfx.x = player.getPosX();
+                playerGfx.y = player.getPosY();
+
+
             }
         }, 0, 1000 / 60);
     }
+
 }
+
+
+class Rect {
+    public int x;
+    public int y;
+    public int width;
+    public int height;
+    public String color;
+
+    public Rect(int x, int y, int width,int height, String color){
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
+        this.color = color;
+    }
+}
+
+
 

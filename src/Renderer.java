@@ -9,7 +9,7 @@ public class Renderer extends JPanel {
     public int WIDTH = 640;
     public int HEIGHT = 640;
 
-    public Graphics gc;
+
 
 
     public Renderer() {
@@ -22,13 +22,23 @@ public class Renderer extends JPanel {
         this.frame.setVisible(true);
     }
 
+
+    public void que(int x, int y, int width, int height, String color){
+
+    }
+
     /**
      * Render loop
      * @param g Graphics component
      */
     public void paintComponent(Graphics g) {
-        gc = g;
-        //fillRect(Main.posX, Main.posY, 64, 64, "#ff0000", gc);
+
+        fillRect(0, 0, WIDTH, HEIGHT,"#ffffff", g);
+
+        for(int i = 0; i < Main.draw.size(); i++){
+            fillRect(Main.draw.get(i).x, Main.draw.get(i).y, Main.draw.get(i).width, Main.draw.get(i).height, Main.draw.get(i).color, g);
+        }
+        //fillRect(Main.playerX, Main.playerY, 64, 64, "#ff0000", g);
         repaint();
     }
 
@@ -58,3 +68,4 @@ public class Renderer extends JPanel {
     }
     */
 }
+
