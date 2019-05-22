@@ -17,7 +17,7 @@ public class Main {
     public static ArrayList<Rect> draw = new ArrayList<Rect>(); //draw contains all elements to be rendered
     public static ArrayList<Block> layout = new ArrayList<Block>();
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
 
         Input input = new Input();

@@ -1,3 +1,4 @@
+import java.io.FileReader;
 import java.util.ArrayList;
 
 
@@ -6,13 +7,24 @@ public class World{
     public ArrayList<Block> layout = new ArrayList<Block>(); //Array that contains all objects in the level, used for collision detection and rendering.
 
 
+    /**
+     * Constructs the level using level.json as a blueprint.
+     * @throws Exception
+     */
+    public World() throws Exception {
+            // pass the path to the file as a parameter
+            FileReader fr = new FileReader("C:\\code\\skola\\programmering\\reCoil\\level.json");
 
-    public World(){
+            for (int i = 0; i < fr.read(); i++) {
 
-
+                layout.add(new Block(32 * i, 32 * 18, 32 * 1, 32));
+                System.out.print((char) i);
+            }
+/*
         layout.add(new Block(0, 32 * 18, 32 * 20, 32));
         layout.add(new Block(32 * 8, 32 * 15, 32 * 4, 32));
         layout.add(new Block(32 * 8, 32 * 16, 32 * 2, 32 * 2));
+        */
     }
 
     public ArrayList<Block> getLayout(){
