@@ -39,4 +39,20 @@
 	- [ ] Physics
 	- [ ] Projectiles
 - [ ] Rendering
+    - [x] Rendering system
 	- [ ] Image rendering
+
+### Main
+
+
+### Input
+Input is read from a KeyEventDispatcher.
+
+`getInput()` returns an ArrayList with a boolean value for each input.
+
+### Player
+
+
+### World
+
+### Renderer

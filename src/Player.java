@@ -7,12 +7,12 @@ public class Player {
     private double velX; //X velocity
     private double velY; //Y velocity
 
-    private double acc = .3; //Acceleration
+    private double acc = .6; //Acceleration
     private double dec = .9; //Deceleration
 
-    public Player() {
-        this.posX = 128; //player X position
-        this.posY = 128; //player Y position
+    public Player(int x, int y) {
+        this.posX = x; //player X position
+        this.posY = y; //player Y position
         this.velX = 0; //player X velocity
         this.velY = 0; //player Y velocity
     }
@@ -77,17 +77,15 @@ public class Player {
 
         if (!colY) {
             this.posY += this.velY;
-            this.velY += .3;
-            this.acc = .3;
+            this.velY += .6;
         } else {
-            this.acc = .2;
+            this.acc = .4;
             this.velY = 0;
         }
     }
 
     /**
      * getCollisionX returns true if the player is colliding with a wall
-     * @return
      */
     private boolean getCollisionX() {
 
@@ -124,7 +122,6 @@ public class Player {
 
     /**
      * readInput is called from main every tick, checks user input, runs the functions for those inputs.
-     *
      * @param input ArrayList where each index represents a key, the order is defined in the input class.
      */
     public void readInput(ArrayList<Boolean> input) {

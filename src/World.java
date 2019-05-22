@@ -1,14 +1,18 @@
 import java.util.ArrayList;
 
+
 public class World{
 
-    public ArrayList<Block> layout = new ArrayList<Block>();
+    public ArrayList<Block> layout = new ArrayList<Block>(); //Array that contains all objects in the level, used for collision detection and rendering.
+
+
 
     public World(){
 
 
         layout.add(new Block(0, 32 * 18, 32 * 20, 32));
-        layout.add(new Block(0, 0, 32, 32 * 20));
+        layout.add(new Block(32 * 8, 32 * 15, 32 * 4, 32));
+        layout.add(new Block(32 * 8, 32 * 16, 32 * 2, 32 * 2));
     }
 
     public ArrayList<Block> getLayout(){
