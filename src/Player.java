@@ -10,6 +10,10 @@ public class Player {
     private double acc = .6; //Acceleration
     private double dec = .9; //Deceleration
 
+    /**
+     * @param x start x position
+     * @param y start y position
+     */
     public Player(int x, int y) {
         this.posX = x; //player X position
         this.posY = y; //player Y position
@@ -25,40 +29,9 @@ public class Player {
         return (int) Math.round(posY);
     }
 
-    private double xHitboxLeft() {
-        return this.posX + this.velX;
-    }
-
-    private double xHitboxRight() {
-        return this.posX + 32 + this.velX;
-    }
-
-    private double xHitboxTop() {
-        return this.posY;
-    }
-
-    private double xHitboxBottom() {
-        return this.posY + 32;
-    }
-
-    private double yHitboxLeft() {
-        return this.posX;
-    }
-
-    private double yHitboxRight() {
-        return this.posX + 32;
-    }
-
-    private double yHitboxTop() {
-        return this.posY + this.velY;
-    }
-
-    private double yHitboxBottom() {
-        return this.posY + 32 + this.velY;
-    }
-
     /**
      * update is called from main every tick.
+     * Moves the player based on its velocity (vel) and decreases the velocity based on deceleration (dec).
      */
     public void update() {
 
@@ -91,10 +64,10 @@ public class Player {
 
         for (int i = 0; i < Main.layout.size(); i++) {
             Block tile = Main.layout.get(i);
-            if (xHitboxLeft() < (tile.x + tile.width) &&
-                    xHitboxRight() > tile.x &&
-                    xHitboxTop() < (tile.y + tile.height) &&
-                    xHitboxBottom() > tile.y) {
+            if (this.posX + this.velX < (tile.x + tile.width) &&
+             this.posX + 32 + this.velX > tile.x &&
+                    this.posY < (tile.y + tile.height) &&
+                    this.posY + 32 > tile.y) {
                 return true;
             }
         }
@@ -103,16 +76,15 @@ public class Player {
 
     /**
      * getCollisionY returns true if the player is standing on something.
-     * @return
      */
     private boolean getCollisionY() {
 
         for (int i = 0; i < Main.layout.size(); i++) {
             Block tile = Main.layout.get(i);
-            if (yHitboxLeft() < tile.x + tile.width &&
-                    yHitboxRight() > tile.x &&
-                    yHitboxTop() < tile.y + tile.height &&
-                    yHitboxBottom() > tile.y) {
+            if (this.posX < tile.x + tile.width &&
+                    this.posX + 32 > tile.x &&
+                    this.posY + this.velY < tile.y + tile.height &&
+                    this.posY + 32 + this.velY > tile.y) {
                 return true;
             }
         }
@@ -133,8 +105,11 @@ public class Player {
 
     }
 
+    /**
+     * Player will jump if it has contact with the ground.
+     */
     private void jump() {
-        if(getCollisionY()) this.velY = -8;
+        if(getCollisionY()) this.velY = -12;
     }
 
     private void moveLeft() {

@@ -25,6 +25,14 @@ class Block {
     public int y;
     public int width;
     public int height;
+
+    /**
+     * The block class represents a part of the level, this means that its something the player can collide with and it will be rendered as a white rectangle with the defined dimentions.
+     * @param x x position
+     * @param y y position
+     * @param width rectangle width
+     * @param height rectangle height
+     */
     public Block(int x, int y, int width, int height){
         this.x = x;
         this.y = y;
